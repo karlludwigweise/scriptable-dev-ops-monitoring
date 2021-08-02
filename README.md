@@ -1,6 +1,6 @@
 # Scriptable DevOps Monitoring Widget
 
-A [scriptable](https://www.scriptables.de) widget for monitoring your services/websites and give you peace of mind 🧘🏻‍♂️.
+A [scriptable](https://scriptable.app/) widget for monitoring your services/websites that gives you peace-of-mind 🧘🏻‍♂️.
 
 <img src="preview.png" width="300px">
 
@@ -23,9 +23,9 @@ const services = [
 ];
 ```
 
-| property | description                                                                                    |
-| -------- | ---------------------------------------------------------------------------------------------- |
-| name     | Display name of your service/site                                                              |
-| path     | Url of endpoint to check                                                                       |
-| type     | Tells the script how to parse the response for you: `undefined` (not at all), `json`, `string` |
-| test     | A function to test your API. Must return true/false                                            |
+| property | required | description                                                                                    |
+| -------- | -------- | ---------------------------------------------------------------------------------------------- |
+| name     | yes      | Display name of your service/site                                                              |
+| path     | yes      | Url of endpoint to check                                                                       |
+| type     |          | Tells the script how to parse the response for you: `undefined` (not at all), `json`, `string` |
+| test     | yes      | A function to test your API. Must return `true`/`false`                                        |
