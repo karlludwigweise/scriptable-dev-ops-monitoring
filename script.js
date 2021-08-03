@@ -7,7 +7,7 @@ Add your services and their tests to this array
   name: "my-service" // display name of your service/site
   path: "https://example.com/api" // url of endpoint to check
   type: "json" // undefined | json (for JSON endpoints) | string (for html text endpoints)
-  test: () => true // a JS function to test your API. Must return true/false
+  test: (body) => true // a JS function to test your API. Must return true/false
 }
 
 */

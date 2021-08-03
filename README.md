@@ -18,7 +18,7 @@ const services = [
         name: "my-service",
         path: "https://example.com/api",
         type: "json",
-        test: () => true
+        test: (body) => true
     }
 ];
 ```
@@ -28,4 +28,4 @@ const services = [
 | name     | yes      | Display name of your service/site                                                              |
 | path     | yes      | Url of endpoint to check                                                                       |
 | type     |          | Tells the script how to parse the response for you: `undefined` (not at all), `json`, `string` |
-| test     | yes      | A function to test your API. Must return `true`/`false`                                        |
+| test     | yes      | A function to test your API. Gets the response as a parameter. Must return `true`/`false`      |
