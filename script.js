@@ -6,8 +6,8 @@ Add your services and their tests to this array
 {
   name: "my-service" // display name of your service/site
   path: "https://example.com/api" // url of endpoint to check
-  type: "json" // undefined | json (for JSON endpoints) | string (for html text endpoints)
-  test: (body) => true // a JS function to test your API. Must return true/false
+  type: "json" // undefined | json (for JSON endpoints) | string (for html text endpoints) | statusCode (for http status code)
+  test: () => true // a JS function to test your API. Must return true/false
 }
 
 */
@@ -106,6 +106,17 @@ async function createWidget() {
 async function checkApi(service) {
   try {
     let req = new Request(service.path);
+
+    // Allow insecure
+    if (service.options?.allowInsecureRequest) {
+      req.allowInsecureRequest = true;
+    }
+
+    // Add headers
+    if (service.options?.headers) {
+      req.headers = service.options.headers;
+    }
+
     let resp;
     switch (service.type) {
       case "json":
@@ -113,6 +124,10 @@ async function checkApi(service) {
         break;
       case "string":
         resp = await req.loadString();
+        break;
+      case "statusCode":
+        resp = await req.load();
+        resp = req.response?.statusCode;
         break;
       default:
         resp = await req.load();

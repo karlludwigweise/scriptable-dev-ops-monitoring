@@ -23,9 +23,30 @@ const services = [
 ];
 ```
 
-| property | required | description                                                                                    |
-| -------- | -------- | ---------------------------------------------------------------------------------------------- |
-| name     | yes      | Display name of your service/site                                                              |
-| path     | yes      | Url of endpoint to check                                                                       |
-| type     |          | Tells the script how to parse the response for you: `undefined` (not at all), `json`, `string` |
-| test     | yes      | A function to test your API. Gets the response as a parameter. Must return `true`/`false`      |
+| property | required | description                                                                                                  |
+| -------- | -------- | ------------------------------------------------------------------------------------------------------------ |
+| name     | yes      | Display name of your service/site                                                                            |
+| path     | yes      | Url of endpoint to check                                                                                     |
+| type     |          | Tells the script how to parse the response for you: `undefined` (not at all), `json`, `string`, `statusCode` |
+| test     | yes      | A function to test your API. Gets the response as a parameter. Must return `true`/`false`                    |
+
+### Advanved options
+
+You can use advanved options to modify the request:
+
+```
+const services = [
+    {
+        ...
+        options: {
+            headers: {},
+            allowInsecureRequest: true,
+        }
+    }
+];
+```
+
+| property             | required | description                                     |
+| -------------------- | -------- | ----------------------------------------------- |
+| headers              |          | Add request headers `{string: string}`          |
+| allowInsecureRequest |          | Skip certificate checks (for self-signed certs) |
